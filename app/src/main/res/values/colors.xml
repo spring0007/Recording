@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="custom_bar_background_start">#3A5FCD</color>
+    <color name="custom_bar_background_end">#1E90FF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="gray">#333333</color>
+    <color name="blue">#006eee</color>
+    <color name="statemessage">#222222</color>
+    <color name="text_color_empty_list">#888888</color>
+    <color name="list_item">#ff9a7f</color>
+    <!-- add for bug606543 At the bottom of the recording list button at the time of the focus, no change in color@} -->
+    <color name="focused_color">#ff9a7f</color>
+    <color name="button_color">#DCDCDC</color>
+    <!--@}-->
+    <color name="actionbar_color">#FF3600</color>
+</resources>

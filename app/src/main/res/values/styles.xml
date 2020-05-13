@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Theme.UI" parent="Theme.AppCompat.NoActionBar"/>
+    <style name="Theme.SoundRecorder" parent="@style/Theme.UI">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/notAnimation</item>
+    </style>
+
+    <style name="notAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+    <style name="Theme.SoundRecorderUUI" parent="@style/Theme.UI">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
+
+    <style name="MediaButton" parent="@android:style/MediaButton">
+        <item name="android:background">@android:drawable/btn_default</item>
+    </style>
+
+    <style name="Theme.RecordingFileList" parent="@android:style/Theme.Holo">
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeNoBack</item>
+        <item name="android:actionModeStyle">@style/Holo.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
+        <item name="android:actionBarSize">56dip</item>
+
+        <item  name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+
+    </style>
+    <style name="ActionModeNoBack" parent="@android:style/Widget.Holo.ActionButton.CloseMode">
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="Theme.SoundPicker" parent="@style/Theme.UI">
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeNoBack</item>
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
+        <item name="android:actionBarSize">56dip</item>
+        <item  name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+    </style>
+    <style name="Theme_RecordingFileList_Footer_Style">
+        <item name="android:windowEnterAnimation">@anim/location_pop_up_anim</item>
+        <item name="android:windowExitAnimation">@anim/location_pop_down_anim</item>
+    </style>
+    <style name="Holo.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">#ffffff</item>
+        <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
+    </style>
+    <style name="AcBar_titleStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="Theme.PathSelect" parent="@style/Theme.UI">
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
+        <item name="android:actionBarSize">56dip</item>
+
+    </style>
+    <style name="MenuTextStyle">
+        <item name="android:textColor">?android:attr/actionMenuTextColor</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    <!-- Created by Spreadst -->
+    <style name="RecordingFileList_overlay" parent="@style/Theme.UI">
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeNoBack</item>
+        <item name="android:actionModeStyle">@style/Holo.ActionBar.overlay</item>
+        <item name="android:actionBarStyle">@style/Holo.ActionBar.overlay</item>
+        <item name="android:actionBarSize">56dip</item>
+        <item  name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+    </style>
+    <style name="Holo.ActionBar.overlay" parent="@style/Theme.UI">
+        <item name="android:background">#ff3600</item>
+        <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
+    </style>
+</resources>

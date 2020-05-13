@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Created by Spreadst -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/stop_overlay" android:state_focused="true"/>
+    <item android:drawable="@drawable/stop_disabled_overlay" android:state_focused="false"/>
+
+</selector>

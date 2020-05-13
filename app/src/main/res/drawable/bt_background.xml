@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- add for bug606543 At the bottom of the recording list button at the time of the focus, no change in color@} -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/focused_color" android:state_focused="true"/>
+    <item android:drawable="@@color/button_color" android:state_focused="false"/>
+</selector>
