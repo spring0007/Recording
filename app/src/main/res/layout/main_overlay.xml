@@ -121,7 +121,7 @@
             android:background="#00000000"
             android:src="@drawable/stop" />
     </RelativeLayout>
-<!--
+
     <RelativeLayout
         android:id="@+id/sound_record_vumeter"
         android:layout_width="match_parent"
@@ -129,7 +129,7 @@
         android:layout_above="@id/opt_button"
         android:layout_below="@id/timerView" >
 
-        <com.android.soundrecorder.VUMeter
+        <com.android.recording.VUMeter
             android:id="@+id/uvMeter"
             android:layout_marginTop="20dip"
             android:layout_marginBottom="30dip"
@@ -139,5 +139,4 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
     </RelativeLayout>
-  -->
 </RelativeLayout>

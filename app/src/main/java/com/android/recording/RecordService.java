@@ -212,11 +212,11 @@ public class RecordService extends Service implements Recorder.OnStateChangedLis
 
     protected void startNotification() {
 
-       /* if(SoundRecorder.UNIVERSEUI_SUPPORT){
+        if(SoundRecorder.UNIVERSEUI_SUPPORT){
             views = new RemoteViews(getPackageName(), R.layout.status_bar_uui);
-        }else{*/
+        }else{
             views = new RemoteViews(getPackageName(), R.layout.status_bar);
-        //}
+        }
         views.setImageViewResource(R.id.icon, R.drawable.status_soundrecorder_on);
 
         updateTimerView();

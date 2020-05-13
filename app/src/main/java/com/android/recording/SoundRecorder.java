@@ -164,7 +164,7 @@ public class SoundRecorder extends Activity
 
     String mTimerFormat;
     private boolean hasUpdateTime = false;  // SPRD： add
-    //public static final boolean UNIVERSEUI_SUPPORT = false;
+    public static final boolean UNIVERSEUI_SUPPORT = true;
     final Handler mHandler = new Handler();
     //Runnable mUpdateTimer = new Runnable() {
     //    public void run() { updateTimerView(); }
@@ -328,20 +328,20 @@ public class SoundRecorder extends Activity
         /* SPRD: update @{ */
         /*SPRD:add for bug582705 @{*/
 
-           /* if (UNIVERSEUI_SUPPORT) {
+            if (UNIVERSEUI_SUPPORT) {
                 this.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 StopWatch stopWatch = StopWatch.start("SoundRecorder");
                 stopWatch.lap("setContentView");
                 setContentView(R.layout.main_overlay);
                 stopWatch.lap("setContentViewEnd");
                 stopWatch.stopAndLog(TAG, 5);
-            } else {*/
+            } else {
                 StopWatch stopWatch = StopWatch.start("SoundRecorder");
                 stopWatch.lap("setContentView");
                 setContentView(R.layout.main);
                 stopWatch.lap("setContentViewEnd");
                 stopWatch.stopAndLog(TAG, 5);
-            //}
+            }
         /* @} */
 
         /* SPRD: add @{ */
@@ -490,12 +490,12 @@ public class SoundRecorder extends Activity
         setActivityState(false);
         sdCardCheck();
         hasUpdateTime = false;
-        /*if(UNIVERSEUI_SUPPORT && (mNowState == Recorder.RECORDING_STATE || mNowState == Recorder.SUSPENDED_STATE)){
-            *//*SPRD:add for bug582705 @{*//*
+        if(UNIVERSEUI_SUPPORT && (mNowState == Recorder.RECORDING_STATE || mNowState == Recorder.SUSPENDED_STATE)){
+            /*SPRD:add for bug582705 @{*/
 
                 mStopButton.setImageResource(R.drawable.stop);
-            *//*@} *//*
-        }*/
+            /*@} */
+        }
         String actualPath = "";
         if(mService == null) {
             actualPath = RecordService.getSavePath();
@@ -593,9 +593,9 @@ public class SoundRecorder extends Activity
         /* SPRD: add for uui @{ */
         /*SPRD:add for bug582705 @{*/
             mRecordButton.setImageResource(R.drawable.record);
-           /* if (UNIVERSEUI_SUPPORT) {
+            if (UNIVERSEUI_SUPPORT) {
                 mStopButton.setImageResource(R.drawable.menu_sprd);
-            }*/
+            }
             /* @} */
 
             mStateLED = (ImageView) findViewById(R.id.stateLED);
@@ -605,7 +605,7 @@ public class SoundRecorder extends Activity
             mTimerView = (TextView) findViewById(R.id.timerView);
         /*@} */
         /* SPRD: update for uui @{ */
-        //if (!UNIVERSEUI_SUPPORT) {
+        if (!UNIVERSEUI_SUPPORT) {
             mExitButtons = (LinearLayout) findViewById(R.id.exitButtons);
             mAcceptButton = (Button) findViewById(R.id.acceptButton);
             mDiscardButton = (Button) findViewById(R.id.discardButton);
@@ -614,7 +614,7 @@ public class SoundRecorder extends Activity
             mDiscardButton.setOnClickListener(this);
             mAcceptButton.setOnClickListener(this);
             mPlayButton.setOnClickListener(this);
-        //}
+        }
         /* @} */
 
         mRecordButton.setOnClickListener(this);
@@ -677,9 +677,9 @@ public class SoundRecorder extends Activity
             if(mNowState == Recorder.IDLE_STATE){
                 /*SPRD:add for bug582705 @{*/
                     mRecordButton.setImageResource(R.drawable.record);
-                    /*if (UNIVERSEUI_SUPPORT) {
+                    if (UNIVERSEUI_SUPPORT) {
                         mStopButton.setImageResource(R.drawable.menu_sprd);
-                    }*/
+                    }
                 /*@} */
             }
         } /*else if (!mRemainingTimeCalculator.diskSpaceAvailable()) {
@@ -752,9 +752,9 @@ public class SoundRecorder extends Activity
              }
              /*SPRD:add for bug582705 @{*/
                 mRecordButton.setImageResource(R.drawable.suspended);
-               /* if (UNIVERSEUI_SUPPORT) {
+                if (UNIVERSEUI_SUPPORT) {
                     mStopButton.setImageResource(R.drawable.stop);
-                }*/
+                }
 
              /*@} */
              if (!isRequestType){
@@ -784,12 +784,12 @@ public class SoundRecorder extends Activity
 
          } else if (mNowState == Recorder.SUSPENDED_STATE) {
              //mRecordButton.setImageResource(R.drawable.suspended);
-            /* if(UNIVERSEUI_SUPPORT){
-                 *//*SPRD:add for bug582705 @{*//*
+             if(UNIVERSEUI_SUPPORT){
+                 /*SPRD:add for bug582705 @{*/
 
                     mStopButton.setImageResource(R.drawable.stop);
-                 *//*@} *//*
-             }*/
+                 /*@} */
+             }
              //mRecorder.resumeRecording();
                mService.resumeRecord();
          }
@@ -860,9 +860,9 @@ public class SoundRecorder extends Activity
              return;
          switch (button.getId()) {
              case R.id.recordButton:
-                // if(!UNIVERSEUI_SUPPORT){
+                 if(!UNIVERSEUI_SUPPORT){
                      invalidateOptionsMenu();
-                 //}
+                 }
                  /* SPRD: fix bug 523373 @{ */
                  mNeedRequestPermissions = checkAndBuildPermissions();
                  if (!mNeedRequestPermissions) {
@@ -876,7 +876,7 @@ public class SoundRecorder extends Activity
              case R.id.stopButton:
                  /*SPRD:add for bug582705 @{*/
                  if (mRecorder != null) {
-                         /*if (UNIVERSEUI_SUPPORT) {
+                         if (UNIVERSEUI_SUPPORT) {
                              mStopButton.setImageResource(R.drawable.menu_sprd);
                              if (mNowState == Recorder.IDLE_STATE) {
                                  if (mRecorder == null) {
@@ -896,10 +896,10 @@ public class SoundRecorder extends Activity
                                      }
                                  }
                              }
-                         }*/
-                         //if (!UNIVERSEUI_SUPPORT) {
+                         }
+                         if (!UNIVERSEUI_SUPPORT) {
                              invalidateOptionsMenu();
-                         //}
+                         }
                          mRecorder.stop();
                          mRecordButton.setImageResource(R.drawable.record);
                      }
@@ -997,9 +997,9 @@ public class SoundRecorder extends Activity
                     if(mRecorder != null && mRecorder.sampleFile() != null) {
                         /*SPRD:add for bug582705 @{*/
 
-                           /* if (UNIVERSEUI_SUPPORT) {
+                            if (UNIVERSEUI_SUPPORT) {
                                 mStopButton.setImageResource(R.drawable.menu_sprd);
-                            }*/
+                            }
                         /*@} */
                         mRecorder.delete();
                         noSaveTost();
@@ -1044,7 +1044,7 @@ public class SoundRecorder extends Activity
         }
         if(keyCode == KeyEvent.KEYCODE_MENU){
             mKeyDownStart = System.currentTimeMillis();
-            /*if(UNIVERSEUI_SUPPORT){
+            if(UNIVERSEUI_SUPPORT){
                  switch (mNowState){
                      case Recorder.RECORDING_STATE:
                      case Recorder.SUSPENDED_STATE:
@@ -1057,7 +1057,7 @@ public class SoundRecorder extends Activity
                         mIsRecordStop = false;
                         return true;
                  }
-            }*/
+            }
             return false;
         }
         if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
@@ -1581,13 +1581,13 @@ public class SoundRecorder extends Activity
                             || mService.getSampleLengthMillsec() == 0) {
                         mRecordButton.setEnabled(true);
                         mRecordButton.setFocusable(true);
-                       // if (!UNIVERSEUI_SUPPORT) {
+                        if (!UNIVERSEUI_SUPPORT) {
                             mPlayButton.setEnabled(false);
                             mPlayButton.setFocusable(false);
                             mExitButtons.setVisibility(View.INVISIBLE);
                             mStopButton.setEnabled(false);
                             mStopButton.setFocusable(false);
-                        //}
+                        }
                         mRecordButton.requestFocus();
 
                         mStateMessage1.setVisibility(View.INVISIBLE);
@@ -1611,20 +1611,20 @@ public class SoundRecorder extends Activity
                         // mRecordButton.setFocusable(true);
                         mRecordButton.setEnabled(false);
                         mRecordButton.setFocusable(false);
-                        //if (!UNIVERSEUI_SUPPORT) {
+                        if (!UNIVERSEUI_SUPPORT) {
                             mPlayButton.setEnabled(true);
                             mPlayButton.setFocusable(true);
                             if (RecordService.mIsUui_Support) {
                                 mExitButtons.setVisibility(View.VISIBLE);
                                 // mVUMeter.setVisibility(View.INVISIBLE);
-                            /*} else {
+                            } else {
                                 mExitButtons.setVisibility(View.INVISIBLE);
                                 mRecordButton.setEnabled(true);
                                 mRecordButton.setFocusable(true);
                                 mPlayButton.setEnabled(false);
                                 mPlayButton.setFocusable(false);
                                 // mVUMeter.setVisibility(View.VISIBLE);
-                            }*/
+                            }
                             mStopButton.setEnabled(false);
                             mStopButton.setFocusable(false);
                         }
@@ -1637,9 +1637,9 @@ public class SoundRecorder extends Activity
                         setTitle(res.getString(R.string.message_recorded));
                     }
                     mRecordButton.setImageResource(R.drawable.record);
-                    /*if (UNIVERSEUI_SUPPORT) {
+                    if (UNIVERSEUI_SUPPORT) {
                         mStopButton.setImageResource(R.drawable.menu_sprd);
-                    }*/
+                    }
                     // if (mSampleInterrupted) {
                     // mStateMessage2.setVisibility(View.VISIBLE);
                     // mStateMessage2.setText(res.getString(R.string.recording_stopped));
@@ -1683,13 +1683,13 @@ public class SoundRecorder extends Activity
                     // mRecordButton.setFocusable(false);
                     mRecordButton.setEnabled(true);
                     mRecordButton.setFocusable(true);
-                   // if (!UNIVERSEUI_SUPPORT) {
+                    if (!UNIVERSEUI_SUPPORT) {
                         mPlayButton.setEnabled(false);
                         mPlayButton.setFocusable(false);
                         mExitButtons.setVisibility(View.INVISIBLE);
                         mStopButton.setEnabled(true);
                         mStopButton.setFocusable(true);
-                    //}
+                    }
                     mStateMessage1.setVisibility(View.VISIBLE);
                     mStateLED.setVisibility(View.VISIBLE);
                     mStateLED.setImageResource(R.drawable.recording_led);
@@ -1727,14 +1727,14 @@ public class SoundRecorder extends Activity
                     // mRecordButton.setFocusable(true);
                     mRecordButton.setEnabled(false);
                     mRecordButton.setFocusable(false);
-                   // if (!UNIVERSEUI_SUPPORT) {
+                    if (!UNIVERSEUI_SUPPORT) {
                         mPlayButton.setEnabled(false);
                         mPlayButton.setFocusable(false);
                         mExitButtons.setVisibility(View.VISIBLE);
                         // mVUMeter.setVisibility(View.INVISIBLE);
                         mStopButton.setEnabled(true);
                         mStopButton.setFocusable(true);
-                    //}
+                    }
                     mStateMessage1.setVisibility(View.INVISIBLE);
                     mStateLED.setVisibility(View.INVISIBLE);
                     mStateMessage2.setVisibility(View.INVISIBLE);
@@ -1764,13 +1764,13 @@ public class SoundRecorder extends Activity
                 } else {*/
                     mRecordButton.setEnabled(true);
                     mRecordButton.setFocusable(false);
-                    //if (!UNIVERSEUI_SUPPORT) {
+                    if (!UNIVERSEUI_SUPPORT) {
                         mPlayButton.setEnabled(false);
                         mPlayButton.setFocusable(false);
                         mExitButtons.setVisibility(View.INVISIBLE);
                         mStopButton.setEnabled(true);
                         mStopButton.setFocusable(true);
-                   // }
+                    }
                     mStateMessage1.setVisibility(View.VISIBLE);
                     mStateLED.setVisibility(View.VISIBLE);
                     mStateLED.setImageResource(R.drawable.idle_led);
@@ -2122,10 +2122,10 @@ public class SoundRecorder extends Activity
                                 updateUi();
                                 return;
                             } else {
-                               /* if(SoundRecorder.UNIVERSEUI_SUPPORT) {
+                                if(SoundRecorder.UNIVERSEUI_SUPPORT) {
                                     dialog();
                                     SoundRecorder.flag = false;
-                                }*/
+                                }
                             }
                         }
                     });

@@ -353,10 +353,10 @@ public class RecordingFileList extends ListActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        /*if (SoundRecorder.UNIVERSEUI_SUPPORT) {
+        if (SoundRecorder.UNIVERSEUI_SUPPORT) {
             MenuInflater inflater = getMenuInflater();
             //inflater.inflate(R.menu.options_menu_overlay, menu);
-        }*/
+        }
         return true;
     }
 

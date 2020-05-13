@@ -101,13 +101,13 @@ public class VUMeter extends View {
         /* SPRD: update for uui @{ */
         float pivotY = 0;
         float l = 0;
-       /* if (SoundRecorder.UNIVERSEUI_SUPPORT) {
+        if (SoundRecorder.UNIVERSEUI_SUPPORT) {
             pivotY = h - PIVOT_RADIUS - PIVOT_Y_OFFSET_UUI * (float)(h / HDPI_HEIGHT);
             l = h * 1 / 2;
-        } else {*/
+        } else {
             pivotY = h - PIVOT_RADIUS - PIVOT_Y_OFFSET;
             l = h * 7 / 10;
-       // }
+        }
         if(mRecorder != null){
             if (mRecorder.state() == Recorder.IDLE_STATE) {
                 mCurrentAngle = (float) Math.PI * 1 / 8;
